@@ -10,7 +10,7 @@ class Controller {
             res.status(500).json({ error: error.message });
         }
     }
-    async criaRegistro(req , res){
+    async criaRegistro(req, res) {
         const dadosUsuario = req.body;
         try {
             const novoUsuarioCriado = await this.entidadeService.criaRegistro(dadosUsuario)
@@ -19,16 +19,13 @@ class Controller {
             res.status(500).json({ error: error.message });
         }
     }
-    async excluiRegistro(req, res) {
+    async exclui(req, res) {
+        const { id } = req.params;
         try {
-            const id = req.params;
-            if (id === 0) {
-                return res.status(404).json({ mensagem: 'Usuário não encontrado' });
-              }
-            await this.entidadeService.deletaRegistro(Number(id));
+            await this.entidadeService.excluiRegistro(Number(id));
             return res.status(200).json({ mensagem: `id ${id} deletado` });
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            return res.status(404).json(error.message);
         }
     }
 
