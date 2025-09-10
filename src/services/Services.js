@@ -12,6 +12,9 @@ class Services {
     async criaRegistro(dadosDoRegistro) {
         return dataSource[this.model].create(dadosDoRegistro);
     }
+    async deletaRegistro(id) {
+        return dataSource[this.model].destroy({ where: { id: id } });
+    }
 }
 
 module.exports = Services;
