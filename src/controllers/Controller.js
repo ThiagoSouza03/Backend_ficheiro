@@ -19,10 +19,21 @@ class Controller {
             res.status(500).json({ error: error.message });
         }
     }
-    async exclui(req, res) {
+    async atualizaRegistro(req, res) {
+        const { id } = req.params;
+        const dadosNovos = req.body;
+        try {
+            const registroAtualizado = await this.entidadeService.atualizaRegistro(dadosNovos, Number(id))
+            return res.status(200).json(registroAtualizado)
+        } catch (error) {
+            
+        }
+    }
+
+    async deletaRegistro(req, res) {
         const { id } = req.params;
         try {
-            await this.entidadeService.excluiRegistro(Number(id));
+            await this.entidadeService.deletaRegistro(Number(id));
             return res.status(200).json({ mensagem: `id ${id} deletado` });
         } catch (error) {
             return res.status(404).json(error.message);

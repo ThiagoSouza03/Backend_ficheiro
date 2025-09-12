@@ -8,5 +8,6 @@ const router = Router();
 router.get('/usuarios', (req, res) => usuarioController.buscaTodosUsuarios(req, res));
 router.post('/usuarios', (req, res) => usuarioController.criaRegistro(req, res));
 router.delete('/usuarios/:id', (req, res) => usuarioController.deletaRegistro(req, res));
+router.put('/usuarios/:id', (req, res) => usuarioController.atualizaRegistro(req, res));
 
 module.exports = router;
