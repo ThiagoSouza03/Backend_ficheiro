@@ -9,6 +9,10 @@ class Services {
         return dataSource[this.model].findAll();
     }
 
+    async buscaUmRegistro(where) {
+        return dataSource[this.model].findOne(where);
+    }
+
     async criaRegistro(dadosDoRegistro) {
         return dataSource[this.model].create(dadosDoRegistro);
     }
