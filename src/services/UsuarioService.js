@@ -9,7 +9,8 @@ class UsuarioService extends Services{
     async criaUsuario(dados) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(dados.senha, salt);
-        dados.senha = hashedPassword;
+        dados.hash_senha = hashedPassword;
+        delete dados.senha;
         return super.criaRegistro(dados);
     }
 }
