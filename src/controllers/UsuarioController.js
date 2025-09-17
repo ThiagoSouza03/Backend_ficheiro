@@ -16,6 +16,7 @@ class UsuarioController extends Controller{
         const novoUsuario = await usuarioServices.criaUsuario(dados);
         res.status(201).json(novoUsuario);
     } catch (error) {
+        console.log(error)
         res.status(400).json({ message: error.message });
     }
    }
@@ -32,7 +33,10 @@ class UsuarioController extends Controller{
             return res.status(401).json({ message: 'Senha inválida' });
         }
         const token = jwt.sign({ id: usuario.id }, 'segredo', { expiresIn: '1h' });
-        res.status(200).json({ token });
+        res.status(200).json({
+            success:true,
+            message:"Usuário criado com sucesso.",
+            token });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

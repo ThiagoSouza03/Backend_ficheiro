@@ -1,8 +1,8 @@
 const Services = require("./Services.js");
 const bcrypt = require('bcryptjs');
 
-class UsuarioService extends Services{
-    constructor(){
+class UsuarioService extends Services {
+    constructor() {
         super('Usuario')
     }
 
