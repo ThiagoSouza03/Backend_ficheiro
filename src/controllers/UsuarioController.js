@@ -27,7 +27,7 @@ class UsuarioController extends Controller{
         if (!usuario) {
             return res.status(404).json({ message: 'Usuário não encontrado' });
         }
-        const senhaValida = await bcrypt.compare(senha, usuario.senha);
+        const senhaValida = await bcrypt.compare(senha, usuario.hash_senha);
         if (!senhaValida) {
             return res.status(401).json({ message: 'Senha inválida' });
         }
